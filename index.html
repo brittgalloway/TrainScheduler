@@ -36,9 +36,12 @@
       <h2>Train times to any destination</h2>
       <!-- table with 5 colums and dynamically filling rows Train Name,Destination, Frequency -- in minutes, next arrival, minutes away-->
       <table>
-        <tr>
-          <th class="heads">Current Train Schedule</th>
-        </tr>
+        <thead>
+          <th><h2>
+
+              Current Train Schedule</th>
+          </h2>
+        </thead>
         <tr>
           <th>Train Name</th>
           <th>Destination</th>
@@ -46,10 +49,23 @@
           <th>Frequency</th>
           <th>Minutes Away</th>
         </tr>
+        <tbody></tbody>
       </table>
 
       <!-- form with 4 inputs Train Name,Destination, First Train Time -- in military time,Frequency -- in minutes
  -->
+      <form action="">
+          <h2>Add Train</h2>
+          <label for="trainName">Train Name: </label>
+          <input type="text" name="trainName"><br>
+          <label for="destination">Destination</label>
+          <input type="text" name="destination"><br>
+          <label for="1stTrain">First Train (military time)</label>
+          <input type="text" name="1stTrain"><br>
+          <label for="frequency">Frequency (minutes)</label>
+          <input type="text" name="frequency"><br>
+          <input type="submit" value="Submit">
+    </form>
     </main>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
