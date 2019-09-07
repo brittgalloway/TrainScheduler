@@ -19,7 +19,13 @@ $(document).ready(function() {
   //clear table, to not make duplicates
   //on "submit" click
   //enter form info to form
-  //function to calculate time away
-  //use First Train (military time) and Frequency (minutes) in the form (might need to convert units)
   //
+  //function to calculate time away
+  //use First Train (military time) and Frequency (minutes) in the form (might need to convert units)to find next arrival time
+  //use next next arrival time and current time (moment()) to find time away
+  //if able, have time away decrement every minute
+  //
+  //if that is working, make a button to clear row/table/search
+  //if that is working, make a button to delete row
+  //if that is working, make a button to edit row
 });
