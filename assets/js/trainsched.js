@@ -1,3 +1,4 @@
+//firebase links
 const firebaseConfig = {
   apiKey: "AIzaSyAM9lhr8g_68x5GhZqS8GnGF-JDwSwgpYc",
   authDomain: "trainschedulerweek7.firebaseapp.com",
@@ -14,4 +15,11 @@ const database = firebase.database();
 
 $(document).ready(function() {
   //program
+  //function
+  //clear table, to not make duplicates
+  //on "submit" click
+  //enter form info to form
+  //function to calculate time away
+  //use First Train (military time) and Frequency (minutes) in the form (might need to convert units)
+  //
 });
