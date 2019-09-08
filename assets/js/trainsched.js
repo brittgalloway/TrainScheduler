@@ -49,17 +49,37 @@ $(document).ready(function() {
     const dest = $("<td>");
     dest.text(snapshot.val().place);
     row.append(dest);
-    const time = snapshot.val().trainTime;
-    // console.log(train_Time);
     const freq = $("<td>");
-    freq.text(snapshot.val().freqrency);
+    const freq1 = snapshot.val().freqrency;
+
+    freq.text(freq1);
     row.append(freq);
+    const trainTIme = snapshot.val().time;
+
+    let firstTimeConverted = moment(trainTIme, "HH:mm").subtract(1, "years");
+    let diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+
+    let tRemainder = diffTime % freq1;
+    console.log(tRemainder);
+
+    let tMinutesTillTrain = freq1 - tRemainder;
+    row.append("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+    let nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    row.append(moment(nextTrain).format("hh:mm"));
     // const freqMin = moment().minute(freq);
     // console.log(freqMin);
     // moment().get("minute");
     // moment().add(Duration);
-    const minLeft = time - freq;
-    row.append(minLeft);
+    // const monthsHolder = $("<td>");
+    // const duration = moment.duration(freq, "minutes");
+    // const arrival = parseInt(duration.asMinutes());
+
+    // const arrival = time - freqMin;
+    // row.append(arrival);
+
+    // const minLeft = time - freq;
+    // row.append(minLeft);
     //append rows to table body
     $("tbody").append(row);
   });
