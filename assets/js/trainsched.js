@@ -14,11 +14,25 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 $(document).ready(function() {
-  //program
-  //function
   //clear table, to not make duplicates
-  //on "submit" click
-  //enter form info to form
+  $("#tbody").empty();
+  //function on "submit" click
+  $("#submit").on("click", function(e) {
+    e.preventDefault();
+    const tTitle = $("#trainName").val();
+    const dest = $("#destination").val();
+    const trainTime = $("#1stTrain").val();
+    const freq = $("#frequency").val();
+    database.ref().push({
+      tTitle: tTitle,
+      place: dest,
+      time: trainTime,
+      freqrency: freq
+    });
+    //enter form info to database
+  });
+  //
+  //enter database info to the table
   //
   //function to calculate time away
   //use First Train (military time) and Frequency (minutes) in the form (might need to convert units)to find next arrival time
