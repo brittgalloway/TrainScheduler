@@ -19,20 +19,41 @@ $(document).ready(function() {
   //function on "submit" click
   $("#submit").on("click", function(e) {
     e.preventDefault();
-    const tTitle = $("#trainName").val();
-    const dest = $("#destination").val();
-    const trainTime = $("#1stTrain").val();
-    const freq = $("#frequency").val();
+    const tTitle = $("#trainName")
+      .val()
+      .trim();
+    const dest = $("#destination")
+      .val()
+      .trim();
+    const trainTime = $("#1stTrain")
+      .val()
+      .trim();
+    const freq = $("#frequency")
+      .val()
+      .trim();
+    //push to firebase
     database.ref().push({
       tTitle: tTitle,
       place: dest,
       time: trainTime,
       freqrency: freq
     });
-    //enter form info to database
   });
-  //
-  //enter database info to the table
+  database.ref().on("child_added", function(snapshot) {
+    const row = $("<tr>");
+    //enter database info to the table
+    const trainName = $("<td>");
+    trainName.text(snapshot.val().tTitle);
+    row.append(trainName);
+    const dest = $("<td>");
+    dest.text(snapshot.val().place);
+    row.append(dest);
+    const trainTime = $("<td>");
+    const freq = $("<td>");
+    freq.text(snapshot.val().freqrency);
+    row.append(freq);
+    $("tbody").append(row);
+  });
   //
   //function to calculate time away
   //use First Train (military time) and Frequency (minutes) in the form (might need to convert units)to find next arrival time
