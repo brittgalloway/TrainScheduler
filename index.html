@@ -4,10 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Train Schedules</title>
-    <!-- <link rel="stylesheet" href="assets/css/reset.css" /> -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-    
+    <title>Document</title>
+   <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+   <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="assets/js/trainsched.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   </head>
   <header>
     <nav>
@@ -50,31 +59,24 @@
           <th>Next Arrival</th>
           <th>Minutes Away</th>
         </tr>
-        <tbody></tbody>
+        <tbody id="tbody"></tbody>
       </table>
 
       <!-- form with 4 inputs Train Name,Destination, First Train Time -- in military time,Frequency -- in minutes
  -->
       <form action="">
           <h3>Add Train</h3>
-          <label for="trainName">Train Name: </label><br>
-          <input type="text" name="trainName"><br>
-          <label for="destination">Destination</label><br>
-          <input type="text" name="destination"><br>
-          <label for="1stTrain">First Train (military time)</label><br>
-          <input type="text" name="1stTrain"><br>
-          <label for="frequency">Frequency (minutes)</label><br>
-          <input type="text" name="frequency"><br>
-          <button type="submit" value="Submit">Submit</button>
+          <label for="">Train Name: </label><br>
+          <input type="text" id="trainName"><br>
+          <label for="">Destination</label><br>
+          <input type="text" id="destination"><br>
+          <label for="">First Train (military time)</label><br>
+          <input type="text" id="1stTrain"><br>
+          <label for="">Frequency (minutes)</label><br>
+          <input type="text" id="frequency"><br>
+          <input type="submit" id="submit">
     </form>
     </main>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
-
-    <script src="assets/js/trainsched.js"></script>
+   
   </body>
 </html>
