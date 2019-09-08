@@ -40,18 +40,27 @@ $(document).ready(function() {
     });
   });
   database.ref().on("child_added", function(snapshot) {
-    const row = $("<tr>");
     //enter database info to the table
+    const row = $("<tr>");
+    //assigning varibles and appending to columns in a single row
     const trainName = $("<td>");
     trainName.text(snapshot.val().tTitle);
     row.append(trainName);
     const dest = $("<td>");
     dest.text(snapshot.val().place);
     row.append(dest);
-    const trainTime = $("<td>");
+    const time = snapshot.val().trainTime;
+    // console.log(train_Time);
     const freq = $("<td>");
     freq.text(snapshot.val().freqrency);
     row.append(freq);
+    // const freqMin = moment().minute(freq);
+    // console.log(freqMin);
+    // moment().get("minute");
+    // moment().add(Duration);
+    const minLeft = time - freq;
+    row.append(minLeft);
+    //append rows to table body
     $("tbody").append(row);
   });
   //
