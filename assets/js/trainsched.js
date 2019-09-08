@@ -39,54 +39,46 @@ $(document).ready(function() {
       freqrency: freq
     });
   });
+  //enter database info to the table
   database.ref().on("child_added", function(snapshot) {
-    //enter database info to the table
+    //creating the row for teh input data
     const row = $("<tr>");
     //assigning varibles and appending to columns in a single row
+    //train name
     const trainName = $("<td>");
     trainName.text(snapshot.val().tTitle);
     row.append(trainName);
+    //destination
     const dest = $("<td>");
     dest.text(snapshot.val().place);
     row.append(dest);
+    //frequency
     const freq = $("<td>");
     const freq1 = snapshot.val().freqrency;
-
     freq.text(freq1);
     row.append(freq);
+    //train time value
     const trainTIme = snapshot.val().time;
-
-    let firstTimeConverted = moment(trainTIme, "HH:mm").subtract(1, "years");
-    let diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-
+    //convert train time to hours and minutes
+    let timeConvert = moment(trainTIme, "HH:mm");
+    //makes timeConvert in minutes
+    let diffTime = moment().diff(moment(timeConvert), "minutes");
+    //finds the remainder of diffTime and freq1
     let tRemainder = diffTime % freq1;
-    console.log(tRemainder);
-
+    //finds frequency - deference in time is the minutes away
     let tMinutesTillTrain = freq1 - tRemainder;
-    row.append("MINUTES TILL TRAIN: " + tMinutesTillTrain);
-
+    //displays next arrival
+    const nextArrive = $("<td>");
     let nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    row.append(moment(nextTrain).format("hh:mm"));
-    // const freqMin = moment().minute(freq);
-    // console.log(freqMin);
-    // moment().get("minute");
-    // moment().add(Duration);
-    // const monthsHolder = $("<td>");
-    // const duration = moment.duration(freq, "minutes");
-    // const arrival = parseInt(duration.asMinutes());
-
-    // const arrival = time - freqMin;
-    // row.append(arrival);
-
-    // const minLeft = time - freq;
-    // row.append(minLeft);
-    //append rows to table body
+    nextArrive.text(moment(nextTrain).format("hh:mm"));
+    row.append(nextArrive);
+    //displays minutes away
+    const minAway = $("<td>");
+    minAway.text(tMinutesTillTrain);
+    row.append(minAway);
+    //adds the row to the body
     $("tbody").append(row);
   });
-  //
-  //function to calculate time away
-  //use First Train (military time) and Frequency (minutes) in the form (might need to convert units)to find next arrival time
-  //use next next arrival time and current time (moment()) to find time away
   //if able, have time away decrement every minute
   //
   //if that is working, make a button to clear row/table/search
